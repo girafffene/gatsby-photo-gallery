@@ -1,6 +1,6 @@
 import React from "react"
 import { Link } from "gatsby"
-import Menu from "semantic-ui-react"
+import { Menu } from "semantic-ui-react"
 
 const SideMenu = () => {
   return (
