@@ -1,48 +1,35 @@
-/**
- * Layout component that queries for data
- * with Gatsby's useStaticQuery component
- *
- * See: https://www.gatsbyjs.com/docs/use-static-query/
- */
-
+//imported dependencies
 import React from "react"
 import PropTypes from "prop-types"
-import { useStaticQuery, graphql } from "gatsby"
-
-import Header from "./header"
-import "./layout.css"
+import { Link } from "gatsby"
+//imported styles
+import { Grid } from "semantic-ui-react"
+import { Menu } from "semantic-ui-react"
+import "../styles/layout.scss"
+//imported components
+import SideMenu from "../components/SideMenu"
 
 const Layout = ({ children }) => {
-  const data = useStaticQuery(graphql`
-    query SiteTitleQuery {
-      site {
-        siteMetadata {
-          title
-        }
-      }
-    }
-  `)
-
   return (
-    <>
-      <Header siteTitle={data.site.siteMetadata?.title || `Title`} />
-      <div
-        style={{
-          margin: `0 auto`,
-          maxWidth: 960,
-          padding: `0 1.0875rem 1.45rem`,
-        }}
-      >
-        <main>{children}</main>
-        <footer style={{
-          marginTop: `2rem`
-        }}>
-          © {new Date().getFullYear()}, Built with
-          {` `}
-          <a href="https://www.gatsbyjs.com">Gatsby</a>
-        </footer>
-      </div>
-    </>
+    <section className="app">
+      {/* Top Menu */}
+      <Menu fixed="top" inverted>
+        <Menu.Item as={Link} to="/" header>IPerez</Menu.Item>
+        <Menu.Menu position="right">
+          <Menu.Item style={{color: "grey"}}>© {new Date().getFullYear()}</Menu.Item>
+        </Menu.Menu>
+      </Menu>
+      {/* End of Top Menu */}
+      <Grid style={{marginTop: "1em"}}>
+        <Grid.Column width={4}>
+          <SideMenu />
+        </Grid.Column>
+
+        <Grid.Column width={12}>
+          <main>{children}</main>{/* Main Content */}
+        </Grid.Column>
+      </Grid>
+    </section>
   )
 }
 
