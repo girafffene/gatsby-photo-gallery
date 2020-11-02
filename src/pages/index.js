@@ -1,22 +1,41 @@
+//imported dependencies
 import React from "react"
-import { Link } from "gatsby"
-
+import { graphql } from "gatsby"
+//imported styles
+import { Header } from "semantic-ui-react"
+//imported components
 import Layout from "../components/layout"
-import Image from "../components/image"
 import SEO from "../components/seo"
+import PhotoGallery, { photoMapper } from "../components/Gallery"
 
-const IndexPage = () => (
-  <Layout>
-    <SEO title="Home" />
-    <h1>Hi people</h1>
-    <p>Welcome to your new Gatsby site.</p>
-    <p>Now go build something great.</p>
-    <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
-      <Image />
-    </div>
-    <Link to="/page-2/">Go to page 2</Link> <br />
-    <Link to="/using-typescript/">Go to "Using TypeScript"</Link>
-  </Layout>
-)
+const IndexPage = ({ data }) => {
+  const { edges } = data.allStrapiImages;
+  const photos = photoMapper(edges)
 
+  return (
+    <Layout>
+      <SEO title="Overview" />
+      <Header as="h1">Overview</Header>
+      <PhotoGallery photos={photos} />
+    </Layout>
+  )
+}
+
+export const query = graphql`
+  {
+    allStrapiImages(filter: {tags: {name: {eq: "favorites"}}}) {
+      edges {
+        node {
+          url {
+            childImageSharp {
+              fixed(width: 960) {
+                ...GatsbyImageSharpFixed
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+`
 export default IndexPage
