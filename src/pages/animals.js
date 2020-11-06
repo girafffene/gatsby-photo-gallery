@@ -15,7 +15,7 @@ const AnimalsPage = ({ data }) => {
   return (
     <Layout>
       <SEO title="Animals" description="Animals photo album" />
-      <Header as="h1">Animals</Header>
+      <Header as="h1" style={{color: "maroon"}}>Animals</Header>
       <PhotoGallery photos={photos} />
     </Layout>
   )
