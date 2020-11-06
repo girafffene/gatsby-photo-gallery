@@ -2,7 +2,7 @@ module.exports = {
   siteMetadata: {
     title: `Photo Gallery`,
     description: `This is a photo gallery made with Gatsby for the front-end and Strapi and Cloudinary for the back-end.`,
-    author: `@devRene_0217`,
+    author: `@devRene0217`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -15,6 +15,9 @@ module.exports = {
         name: `images`,
         path: `${__dirname}/src/images`,
       },
+    },
+    {
+      resolve: `gatsby-plugin-styled-components`,
     },
     {
       resolve: 'gatsby-source-strapi',
