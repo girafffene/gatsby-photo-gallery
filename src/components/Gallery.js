@@ -23,10 +23,14 @@ const PhotoGallery = ({ photos }) => {
       <ModalGateway>
         { viewerIsOpen ? (
           <Modal onClose={closeLightBox}>
-            <Carousel currentIndex={currentImage} views={photos.map(x => ({
-                ...x,
-                srcset: x.srcSet,
-                caption: x.title
+            <Carousel currentIndex={currentImage} views={photos.map(pic => ({
+                ...pic,
+                srcset: pic.srcSet,
+                src: pic.src,
+                alt: pic.title,
+                caption: pic.title,
+                width: pic.width,
+                height: pic.height,
               }))}
             />
           </Modal>
@@ -36,39 +40,14 @@ const PhotoGallery = ({ photos }) => {
   )
 }
 
-//greatest common divisor
-function gcd(a, b) {
-  let temp, m;
-  if ( b > a) {
-    temp = a;
-    a = b;
-    b = temp;
-  }
-  while( b !== 0) {
-    m = a % b;
-    a = b;
-    b = m;
-  }
-  return a;
-}
-
-//aspect ratio calculator 
-function ratio(node, index) {
-  const x = node.url.childImageSharp.fixed.width;
-  const y = node.url.childImageSharp.fixed.height;
-  let c = gcd(x, y);
-  const aspect = "" + x / c + ":" + y / c;
-  return aspect.split(":")[index];
-}
-
 //photo data structure transformer
 export function photoMapper(edges) {
   return edges.map(document => ({
     src: document.node.url.childImageSharp.fixed.src,
     srcSet: document.node.url.childImageSharp.fixed.srcSet,
     title: document.node.title,
-    width: ratio(document.node, 0),
-    height: ratio(document.node, 1)
+    width: document.node.url.childImageSharp.fixed.width,
+    height: document.node.url.childImageSharp.fixed.height,
   }))
 }
 
