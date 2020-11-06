@@ -15,7 +15,7 @@ const IndexPage = ({ data }) => {
   return (
     <Layout>
       <SEO title="Overview" />
-      <Header as="h1">Overview</Header>
+      <Header as="h1" style={{color: "maroon"}}>Favorites</Header>
       <PhotoGallery photos={photos} />
     </Layout>
   )
