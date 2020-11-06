@@ -23,7 +23,7 @@ const AnimalsPage = ({ data }) => {
 
 export const query = graphql`
   {
-    allStrapiImages(filter: {tags: {name: {eq: "animals"}}}) {
+    allStrapiImages(filter: {tags: {name: {eq: "Animals"}}}) {
       edges {
         node {
           url {

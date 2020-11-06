@@ -23,7 +23,7 @@ const FlowersPage = ({ data }) => {
 
 export const query = graphql`
   {
-    allStrapiImages(filter: {tags: {name: {eq: "flowers"}}}) {
+    allStrapiImages(filter: {tags: {name: {eq: "Flowers"}}}) {
       edges {
         node {
           url {

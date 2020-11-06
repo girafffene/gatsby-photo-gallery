@@ -22,7 +22,7 @@ const AstronomyPage = ({ data }) => {
 
 export const query = graphql`
   {
-    allStrapiImages(filter: {tags: {name: {eq: "astronomy"}}}) {
+    allStrapiImages(filter: {tags: {name: {eq: "Astronomy"}}}) {
       edges {
         node {
           url {

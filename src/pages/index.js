@@ -23,7 +23,7 @@ const IndexPage = ({ data }) => {
 
 export const query = graphql`
   {
-    allStrapiImages(filter: {tags: {name: {eq: "favorites"}}}) {
+    allStrapiImages(filter: {tags: {name: {eq: "Favorites"}}}) {
       edges {
         node {
           url {
