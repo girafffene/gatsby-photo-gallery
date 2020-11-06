@@ -22,7 +22,7 @@ module.exports = {
     {
       resolve: 'gatsby-source-strapi',
       options: {
-        apiURL: 'http://localhost:1337',
+        apiURL: 'https://strapi-photo-gallery.herokuapp.com',
         contentTypes: ['images', 'tags'],
         queryLimit: 1000,
       },
