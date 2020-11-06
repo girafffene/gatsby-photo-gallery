@@ -14,7 +14,7 @@ const IndexPage = ({ data }) => {
 
   return (
     <Layout>
-      <SEO title="Overview" />
+      <SEO title="Favorites" description="Photo album of Irene's favorite images." />
       <Header as="h1" style={{color: "maroon"}}>Favorites</Header>
       <PhotoGallery photos={photos} />
     </Layout>
